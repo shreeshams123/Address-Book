@@ -2,7 +2,7 @@
 
 namespace Address_Book_Project
 {
-    class AddressBookMain
+    public class AddressBookMain
     {
         static void Main(string[] args)
         {
