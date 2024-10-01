@@ -11,10 +11,10 @@ namespace Address_Book_Project
         public string Address {  get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public string Zip {  get; set; }
-        public string PhoneNumber {  get; set; }
+        public int Zip {  get; set; }
+        public long PhoneNumber {  get; set; }
         public string Email { get; set; }
-        public Contact(string firstName, string lastName, string address, string city, string state, string zip, string phoneNumber, string email)
+        public Contact(string firstName, string lastName, string address, string city, string state, int zip, long phoneNumber, string email)
         {
             FirstName = firstName;
             LastName = lastName;
