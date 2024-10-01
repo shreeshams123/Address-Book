@@ -11,9 +11,47 @@ namespace Address_Book_Project
         {
             contacts=new List<Contact>();
         }
-        public void addContact(Contact contact)
+        public void AddContact(Contact contact)
         {
             contacts.Add(contact);
+        }
+        public void EditContact()
+        {
+            Console.WriteLine("Enter firstname");
+            string fname=Console.ReadLine();
+
+            Console.WriteLine("Enter lastname");
+            string lname=Console.ReadLine();
+            Contact contactToEdit = null; ;
+            foreach (var contact in contacts)
+            {
+                if (contact.FirstName == fname && contact.LastName == lname)
+                {
+                   contactToEdit = contact;
+                    break;
+                }
+            }
+            if (contactToEdit != null)
+            {
+                Console.WriteLine("Enter new address");
+                contactToEdit.Address = Console.ReadLine();
+                Console.WriteLine("Enter city");
+                contactToEdit.City=Console.ReadLine();
+                Console.WriteLine("Enter state");
+                contactToEdit.State=Console.ReadLine();
+                Console.WriteLine("Enter zip");
+                contactToEdit.Zip=Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter phone number");
+                contactToEdit.PhoneNumber=Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter email");
+                contactToEdit.Email=Console.ReadLine();
+                Console.WriteLine("Contact updated successfully");
+
+            }
+            else
+            {
+                Console.WriteLine("Contact not found");
+            }
         }
     }
 }

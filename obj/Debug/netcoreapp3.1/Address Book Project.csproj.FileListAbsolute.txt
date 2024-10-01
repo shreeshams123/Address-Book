@@ -1,0 +1,14 @@
+D:\Address Book Project\Address Book Project\bin\Debug\netcoreapp3.1\Address Book Project.exe
+D:\Address Book Project\Address Book Project\bin\Debug\netcoreapp3.1\Address Book Project.deps.json
+D:\Address Book Project\Address Book Project\bin\Debug\netcoreapp3.1\Address Book Project.runtimeconfig.json
+D:\Address Book Project\Address Book Project\bin\Debug\netcoreapp3.1\Address Book Project.runtimeconfig.dev.json
+D:\Address Book Project\Address Book Project\bin\Debug\netcoreapp3.1\Address Book Project.dll
+D:\Address Book Project\Address Book Project\bin\Debug\netcoreapp3.1\Address Book Project.pdb
+D:\Address Book Project\Address Book Project\obj\Debug\netcoreapp3.1\Address Book Project.GeneratedMSBuildEditorConfig.editorconfig
+D:\Address Book Project\Address Book Project\obj\Debug\netcoreapp3.1\Address Book Project.AssemblyInfoInputs.cache
+D:\Address Book Project\Address Book Project\obj\Debug\netcoreapp3.1\Address Book Project.AssemblyInfo.cs
+D:\Address Book Project\Address Book Project\obj\Debug\netcoreapp3.1\Address Book Project.csproj.CoreCompileInputs.cache
+D:\Address Book Project\Address Book Project\obj\Debug\netcoreapp3.1\Address Book Project.sourcelink.json
+D:\Address Book Project\Address Book Project\obj\Debug\netcoreapp3.1\Address Book Project.dll
+D:\Address Book Project\Address Book Project\obj\Debug\netcoreapp3.1\Address Book Project.pdb
+D:\Address Book Project\Address Book Project\obj\Debug\netcoreapp3.1\Address Book Project.genruntimeconfig.cache

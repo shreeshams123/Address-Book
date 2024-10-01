@@ -21,11 +21,12 @@ namespace Address_Book_Project
             Console.WriteLine("Enter zip");
             int zip=Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter phone number");
-            long phno=Convert.ToInt32(Console.ReadLine());
+            long phno=Convert.ToInt64(Console.ReadLine());
             Console.WriteLine("Enter email");
             string email=Console.ReadLine();
             Contact contact = new Contact(fname,lname,address,city,state,zip,phno,email);
-            addressBook.addContact(contact);
+            addressBook.AddContact(contact);
+            addressBook.EditContact();
         }
     }
 }
