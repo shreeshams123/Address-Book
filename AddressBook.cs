@@ -42,7 +42,7 @@ namespace Address_Book_Project
                 Console.WriteLine("Enter zip");
                 contactToEdit.Zip=Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Enter phone number");
-                contactToEdit.PhoneNumber=Convert.ToInt32(Console.ReadLine());
+                contactToEdit.PhoneNumber=Convert.ToInt64(Console.ReadLine());
                 Console.WriteLine("Enter email");
                 contactToEdit.Email=Console.ReadLine();
                 Console.WriteLine("Contact updated successfully");
@@ -52,6 +52,25 @@ namespace Address_Book_Project
             {
                 Console.WriteLine("Contact not found");
             }
+        }
+        public void DeleteContact()
+        {
+            Console.WriteLine("Enter the first name and last name of the contact to be deleted");
+            string fname=Console.ReadLine() ;
+            string lname=Console.ReadLine();
+            foreach (var contact in contacts)
+            {
+                if (contact.FirstName == fname && contact.LastName == lname)
+                {
+                    contacts.Remove(contact);
+                    Console.WriteLine("Deleted contact successfully");
+                    return;
+                }
+            }
+                
+        Console.WriteLine("Contact not found");
+                
+            
         }
     }
 }
