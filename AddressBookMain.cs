@@ -26,8 +26,9 @@ namespace Address_Book_Project
             string email=Console.ReadLine();
             Contact contact = new Contact(fname,lname,address,city,state,zip,phno,email);
             addressBook.AddContact(contact);
-            //addressBook.EditContact();
+            addressBook.EditContact();
             addressBook.DeleteContact();
+            addressBook.AddMultipleContacts();
         }
     }
 }

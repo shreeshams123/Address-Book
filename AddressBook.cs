@@ -72,5 +72,41 @@ namespace Address_Book_Project
                 
             
         }
+        public void AddMultipleContacts()
+        {
+            Console.WriteLine("Enter number of contacts you want to add");
+            int numberofcontact=int.Parse(Console.ReadLine());
+            for (int i = 0; i < numberofcontact; i++)
+            {
+                Console.WriteLine("Enter details of " + i + 1+" contact");
+                Console.WriteLine("Enter First Name:");
+                string firstName = Console.ReadLine();
+
+                Console.WriteLine("Enter Last Name:");
+                string lastName = Console.ReadLine();
+
+                Console.WriteLine("Enter Address:");
+                string address = Console.ReadLine();
+
+                Console.WriteLine("Enter City:");
+                string city = Console.ReadLine();
+
+                Console.WriteLine("Enter State:");
+                string state = Console.ReadLine();
+
+                Console.WriteLine("Enter Zip:");
+                int zip = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Enter Phone Number:");
+                long phoneNumber = Convert.ToInt64(Console.ReadLine());
+
+                Console.WriteLine("Enter Email:");
+                string email = Console.ReadLine();
+                Contact contact=new Contact(firstName,lastName, address, city, state, zip, phoneNumber,email);
+                AddContact(contact);
+
+            }
+            }
+
     }
 }
