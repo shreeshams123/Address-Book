@@ -13,7 +13,7 @@ namespace Address_Book_Project
             while (flag)
             {
                 Console.WriteLine("MENU");
-                Console.WriteLine("1.Add Address book\n2.Add contact to existing address book\n3.Delete contact from a address book\n4.Display all address books\n5.Display contacts in a address book\n6.Exit");
+                Console.WriteLine("1.Add Address book\n2.Add contact to existing address book\n3.Delete contact from a address book\n4.Display all address books\n5.Display contacts in a address book\n6.Edit a contact in a address book\n7.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -92,7 +92,21 @@ namespace Address_Book_Project
                             Console.WriteLine("Address book not found");
                         }
                         break;
-                    case 6: flag = false;
+                    case 6:Console.WriteLine("Enter the address book from which the contact to be edited");
+                        string ename= Console.ReadLine();
+                        if (addbookmanager.ContainsKey(ename))
+                        {
+                            addbookmanager[ename].EditContact();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Address Book not found");
+                        }
+                        break;
+                    case 7: flag = false;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option");
                         break;
                 }
 
