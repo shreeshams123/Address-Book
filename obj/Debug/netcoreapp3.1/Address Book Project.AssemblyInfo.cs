@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Address Book Project")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+18be08f306b275ff66147199d270febd8c9fc8e9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+50ebf20d00ee1eaba6cdda82e4781b3d7d998173")]
 [assembly: System.Reflection.AssemblyProductAttribute("Address Book Project")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Address Book Project")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

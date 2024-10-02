@@ -1,34 +1,102 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Address_Book_Project
 {
     public class AddressBookMain
     {
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to address book program");
-            AddressBook addressBook = new AddressBook();
-            Console.WriteLine("Enter firstname");
-            string fname=Console.ReadLine();
-            Console.WriteLine("Enter lastname");
-            string lname=Console.ReadLine();
-            Console.WriteLine("Enter Address");
-            string address=Console.ReadLine();
-            Console.WriteLine("Enter city");
-            string city=Console.ReadLine();
-            Console.WriteLine("Enter state");
-            string state = Console.ReadLine();
-            Console.WriteLine("Enter zip");
-            int zip=Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter phone number");
-            long phno=Convert.ToInt64(Console.ReadLine());
-            Console.WriteLine("Enter email");
-            string email=Console.ReadLine();
-            Contact contact = new Contact(fname,lname,address,city,state,zip,phno,email);
-            addressBook.AddContact(contact);
-            addressBook.EditContact();
-            addressBook.DeleteContact();
-            addressBook.AddMultipleContacts();
+            Dictionary<string, AddressBook> addbookmanager = new Dictionary<string, AddressBook>();
+            bool flag = true;
+            while (flag)
+            {
+                Console.WriteLine("MENU");
+                Console.WriteLine("1.Add Address book\n2.Add contact to existing address book\n3.Delete contact from a address book\n4.Display all address books\n5.Display contacts in a address book\n6.Exit");
+                int option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine("Enter name of address book");
+                        string name = Console.ReadLine();
+                        if (!addbookmanager.ContainsKey(name))
+                        {
+                            addbookmanager[name] = new AddressBook();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Address book already exist");
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter the name of the Address Book to add contact:");
+                        string existingBookName = Console.ReadLine();
+
+                        if (addbookmanager.ContainsKey(existingBookName))
+                        {
+                            Console.WriteLine("Enter First Name:");
+                            string firstName = Console.ReadLine();
+                            Console.WriteLine("Enter Last Name:");
+                            string lastName = Console.ReadLine();
+                            Console.WriteLine("Enter Address:");
+                            string address = Console.ReadLine();
+                            Console.WriteLine("Enter City:");
+                            string city = Console.ReadLine();
+                            Console.WriteLine("Enter State:");
+                            string state = Console.ReadLine();
+                            Console.WriteLine("Enter Zip:");
+                            int zip = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Enter Phone Number:");
+                            long phoneNumber = Convert.ToInt64(Console.ReadLine());
+                            Console.WriteLine("Enter Email:");
+                            string email = Console.ReadLine();
+
+                            Contact contact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+                            addbookmanager[existingBookName].AddContact(contact);
+                            Console.WriteLine("Contact added successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Address Book '{existingBookName}' does not exist.");
+                        }
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter the name of the address book to delete contact from");
+                        string bookname = Console.ReadLine();
+                        if (addbookmanager.ContainsKey(bookname))
+                        {
+                            addbookmanager[bookname].DeleteContact();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Address book not found");
+                        }
+                        break;
+                    case 4:foreach(var item in addbookmanager)
+                        {
+                            Console.WriteLine(item.Key);
+                        }
+                        break;
+                    case 5:Console.WriteLine("Enter the name of the address book");
+                        string bname= Console.ReadLine();
+                        if (addbookmanager.ContainsKey(bname))
+                        {
+                            foreach (var item in addbookmanager[bname].contacts)
+                            {
+                                Console.WriteLine(item.FirstName + " " + item.LastName);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Address book not found");
+                        }
+                        break;
+                    case 6: flag = false;
+                        break;
+                }
+
+            }
         }
     }
 }
