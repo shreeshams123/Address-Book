@@ -1,19 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Address_Book_Project
 {
     public class AddressBookMain
     {
-
-        static void Main(string[] args)
+        static Dictionary<string, AddressBook> addbookmanager = new Dictionary<string, AddressBook>();
+        public static void SearchByCity(string city)
         {
-            Dictionary<string, AddressBook> addbookmanager = new Dictionary<string, AddressBook>();
+            var results = addbookmanager.Values.SelectMany(addressbook => addressbook.contacts).Where(contact => contact.City.Equals(city));
+            foreach (var result in results)
+            {
+                Console.WriteLine(result.FirstName+" "+result.LastName);
+            }
+        }
+        public static void SearchByState(string state)
+        {
+            var results = addbookmanager.Values.SelectMany(addressbook => addressbook.contacts).Where(contact => contact.State.Equals(state));
+            foreach (var result in results)
+            {
+                Console.WriteLine(result.FirstName + " " + result.LastName);
+            }
+        }
+        public static void Main(string[] args)
+        {
+            
             bool flag = true;
             while (flag)
             {
                 Console.WriteLine("MENU");
-                Console.WriteLine("1.Add Address book\n2.Add contact to existing address book\n3.Delete contact from a address book\n4.Display all address books\n5.Display contacts in a address book\n6.Edit a contact in a address book\n7.Add multiple contacts to a address book\n8.Exit");
+                Console.WriteLine("1.Add Address book\n2.Add contact to existing address book\n3.Delete contact from a address book\n4.Display all address books\n5.Display contacts in a address book\n6.Edit a contact in a address book\n7.Add multiple contacts to a address book\n8.Search by City\n9.Search by State\n10.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -42,7 +59,7 @@ namespace Address_Book_Project
                             Console.WriteLine("Enter Address:");
                             string address = Console.ReadLine();
                             Console.WriteLine("Enter City:");
-                            string city = Console.ReadLine();
+                            string City = Console.ReadLine();
                             Console.WriteLine("Enter State:");
                             string state = Console.ReadLine();
                             Console.WriteLine("Enter Zip:");
@@ -52,9 +69,9 @@ namespace Address_Book_Project
                             Console.WriteLine("Enter Email:");
                             string email = Console.ReadLine();
 
-                            Contact contact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+                            Contact contact = new Contact(firstName, lastName, address, City, state, zip, phoneNumber, email);
                             addbookmanager[existingBookName].AddContact(contact);
-                            Console.WriteLine("Contact added successfully.");
+                            
                         }
                         else
                         {
@@ -114,7 +131,11 @@ namespace Address_Book_Project
                             Console.WriteLine("Address book not found");
                         }
                         break;
-                    case 8: flag = false;
+                    case 8:Console.WriteLine("Enter the City");
+                        string city=Console.ReadLine();
+                        SearchByCity(city);
+                        break;
+                    case 10: flag = false;
                         break;
                     default:
                         Console.WriteLine("Invalid option");

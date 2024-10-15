@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 
 namespace Address_Book_Project
@@ -11,9 +13,18 @@ namespace Address_Book_Project
         {
             contacts=new List<Contact>();
         }
+      
         public void AddContact(Contact contact)
         {
-            contacts.Add(contact);
+            if (!contacts.Any(c => c.Equals(contact)))
+            {
+                contacts.Add(contact);
+                Console.WriteLine("Contact added successfully");
+            }
+            else
+            {
+                Console.WriteLine("Contact already exist");
+            }
         }
         public void EditContact()
         {
