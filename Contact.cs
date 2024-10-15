@@ -25,5 +25,13 @@ namespace Address_Book_Project
             PhoneNumber = phoneNumber;
             Email = email;
         }
+        public bool Equal(Object obj)
+        {
+            if (obj is Contact contact)
+            {
+                return this.FirstName.Equals(contact.FirstName) && this.LastName.Equals(contact.LastName);
+            }
+            return false;
+        }
     }
 }
