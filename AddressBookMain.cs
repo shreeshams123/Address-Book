@@ -67,6 +67,10 @@ namespace Address_Book_Project
                 Console.WriteLine(state);
                 viewByStateDict[state].ForEach(contact => Console.WriteLine(contact.FirstName));
             }
+            else
+            {
+                Console.WriteLine("No contacts found");
+            }
         }
         public static void Main(string[] args)
         {
@@ -116,7 +120,9 @@ namespace Address_Book_Project
 
                             Contact contact = new Contact(firstName, lastName, address, City, State, zip, phoneNumber, email);
                             addbookmanager[existingBookName].AddContact(contact);
-                            
+                            AddToStateorCityDictionary(contact);
+
+
                         }
                         else
                         {
