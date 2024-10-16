@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Transactions;
 
 namespace Address_Book_Project
 {
     public class AddressBookMain
     {
         static Dictionary<string, AddressBook> addbookmanager = new Dictionary<string, AddressBook>();
+        static Dictionary<string,List<Contact>> viewByCityDict = new Dictionary<string, List<Contact>>();
+        static Dictionary<string,List<Contact>> viewByStateDict = new Dictionary<string, List<Contact>>();
         public static void SearchByCity(string city)
         {
             var results = addbookmanager.Values.SelectMany(addressbook => addressbook.contacts).Where(contact => contact.City.Equals(city));
@@ -23,6 +27,47 @@ namespace Address_Book_Project
                 Console.WriteLine(result.FirstName + " " + result.LastName);
             }
         }
+        public static void AddToStateorCityDictionary(Contact contact)
+        {
+            if (!viewByCityDict.ContainsKey(contact.City))
+            {
+                viewByCityDict[contact.City] = new List<Contact>();
+            }
+            else
+            {
+                viewByCityDict[contact.City].Add(contact);
+            }
+        
+
+            if (!viewByStateDict.ContainsKey(contact.State))
+            {
+                viewByStateDict[contact.State] = new List<Contact>();
+            }
+            else
+            {
+                viewByStateDict[contact.State].Add(contact);
+            }
+        }
+        public static void ViewByCity(string city)
+        {
+            if (!viewByCityDict.ContainsKey(city))
+            {
+                Console.WriteLine(city);
+                viewByCityDict[city].ForEach(contact => Console.WriteLine(contact.FirstName));
+            }
+            else
+            {
+                Console.WriteLine("No contacts found");
+            }
+        }
+        public static void ViewByState(string state)
+        {
+            if (!viewByStateDict.ContainsKey(state))
+            {
+                Console.WriteLine(state);
+                viewByStateDict[state].ForEach(contact => Console.WriteLine(contact.FirstName));
+            }
+        }
         public static void Main(string[] args)
         {
             
@@ -30,7 +75,7 @@ namespace Address_Book_Project
             while (flag)
             {
                 Console.WriteLine("MENU");
-                Console.WriteLine("1.Add Address book\n2.Add contact to existing address book\n3.Delete contact from a address book\n4.Display all address books\n5.Display contacts in a address book\n6.Edit a contact in a address book\n7.Add multiple contacts to a address book\n8.Search by City\n9.Search by State\n10.Exit");
+                Console.WriteLine("1.Add Address book\n2.Add contact to existing address book\n3.Delete contact from a address book\n4.Display all address books\n5.Display contacts in a address book\n6.Edit a contact in a address book\n7.Add multiple contacts to a address book\n8.Search by City\n9.Search by State\n10.View Contacts by city\n11.View Contacts by state\n12.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -61,7 +106,7 @@ namespace Address_Book_Project
                             Console.WriteLine("Enter City:");
                             string City = Console.ReadLine();
                             Console.WriteLine("Enter State:");
-                            string state = Console.ReadLine();
+                            string State = Console.ReadLine();
                             Console.WriteLine("Enter Zip:");
                             int zip = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Enter Phone Number:");
@@ -69,7 +114,7 @@ namespace Address_Book_Project
                             Console.WriteLine("Enter Email:");
                             string email = Console.ReadLine();
 
-                            Contact contact = new Contact(firstName, lastName, address, City, state, zip, phoneNumber, email);
+                            Contact contact = new Contact(firstName, lastName, address, City, State, zip, phoneNumber, email);
                             addbookmanager[existingBookName].AddContact(contact);
                             
                         }
@@ -135,7 +180,19 @@ namespace Address_Book_Project
                         string city=Console.ReadLine();
                         SearchByCity(city);
                         break;
-                    case 10: flag = false;
+                    case 9:Console.WriteLine("Enter the State");
+                        string state= Console.ReadLine();
+                        SearchByState(state);
+                        break;
+                    case 10: Console.WriteLine("Enter the city");
+                        string City1= Console.ReadLine();
+                        ViewByCity(City1);
+                        break;
+                    case 11: Console.WriteLine("Enter the state");
+                        string State1 = Console.ReadLine();
+                        ViewByState(State1);
+                        break;
+                    case 12: flag = false;
                         break;
                     default:
                         Console.WriteLine("Invalid option");
