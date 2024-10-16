@@ -72,6 +72,28 @@ namespace Address_Book_Project
                 Console.WriteLine("No contacts found");
             }
         }
+        public static void CountByCity(string city)
+        {
+            if (viewByCityDict.ContainsKey(city))
+            {
+                Console.WriteLine(city + ":" + viewByCityDict[city].Count);
+            }
+            else
+            {
+                Console.WriteLine("City not found");
+            }
+        }
+        public static void CountByState(string state)
+        {
+            if (viewByStateDict.ContainsKey(state))
+            {
+                Console.WriteLine(state +":" + viewByStateDict[state].Count);
+            }
+            else
+            {
+                Console.WriteLine("State not found");
+            }
+        }
         public static void Main(string[] args)
         {
             
@@ -79,7 +101,7 @@ namespace Address_Book_Project
             while (flag)
             {
                 Console.WriteLine("MENU");
-                Console.WriteLine("1.Add Address book\n2.Add contact to existing address book\n3.Delete contact from a address book\n4.Display all address books\n5.Display contacts in a address book\n6.Edit a contact in a address book\n7.Add multiple contacts to a address book\n8.Search by City\n9.Search by State\n10.View Contacts by city\n11.View Contacts by state\n12.Exit");
+                Console.WriteLine("1.Add Address book\n2.Add contact to existing address book\n3.Delete contact from a address book\n4.Display all address books\n5.Display contacts in a address book\n6.Edit a contact in a address book\n7.Add multiple contacts to a address book\n8.Search by City\n9.Search by State\n10.View Contacts by city\n11.View Contacts by state\n12.Count contacts by State\n13.Count contacts by City\n14.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -198,7 +220,15 @@ namespace Address_Book_Project
                         string State1 = Console.ReadLine();
                         ViewByState(State1);
                         break;
-                    case 12: flag = false;
+                    case 12: Console.WriteLine("Enter city");
+                        string City2= Console.ReadLine();
+                        CountByCity(City2);
+                        break;
+                    case 13: Console.WriteLine("Enter state");
+                        string State2= Console.ReadLine();
+                        CountByState(State2);
+                        break;
+                    case 14: flag = false;
                         break;
                     default:
                         Console.WriteLine("Invalid option");
